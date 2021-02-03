@@ -13,6 +13,7 @@
  */
 
 // Recursive
+// My solution
 function inorderTraversal(root: TreeNode | null): number[] {
     const res: Array<number> = [];
     
@@ -23,5 +24,49 @@ function inorderTraversal(root: TreeNode | null): number[] {
     return res;
 };
 
+// Better solution
+function inorderTraversal(root: TreeNode | null): number[] { 
+    let result = [];
+    
+    function iot(node) {
+        if(!node) {
+            return;
+        }
+        iot(node.left);
+        result.push(node.val);
+        iot(node.right);
+    }
+    
+    iot(root);
+    return result;
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------
+
 // Iteratively
-// Todo
+// Correct solution
+function inorderTraversal(root: TreeNode | null): number[] { 
+    let results = [];
+    let stack = [];
+    let currNode = root;
+
+    stack.push(root);
+
+    while (currNode !== null || stack.length > 0) {
+        while (currNode) {
+            currNode = currNode.left;
+            stack.push(currNode);
+        }
+        
+        if (stack.length > 0) {
+            currNode = stack.pop();
+            
+            if (currNode) {
+                results.push(currNode.val);
+                currNode = currNode.right;
+                stack.push(currNode);
+            }
+        }
+    }
+    return results;
+}

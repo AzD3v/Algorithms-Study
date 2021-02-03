@@ -13,6 +13,7 @@
  */
 
 // Recursive
+// My solution
 function preorderTraversal(root: TreeNode | null): number[] {
     const res: Array<number> = [];
     
@@ -22,5 +23,29 @@ function preorderTraversal(root: TreeNode | null): number[] {
     return res;
 };
 
-// Iteratively
-// Todo
+// Iteratively 
+// Correct solution
+var preorderTraversal = function(root) {
+    const stack = [];
+		
+    if(root !== null){
+        stack.push(root);
+    }
+    
+    const res = [];
+		
+    while(stack.length > 0){
+        var node = stack.pop();
+        res.push(node.val);
+				
+        if(node.right !== null){
+            stack.push(node.right);
+        }
+				
+        if(node.left !== null){
+            stack.push(node.left);
+        }
+    }
+
+    return res; 
+};

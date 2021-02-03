@@ -12,4 +12,36 @@
  * }
  */
 
- // Todo - correct solution
+ // Correct solution
+ const levelOrderBottom = function(root) {
+    const queue = [];
+    const resArr = [];
+    
+    if (!root) {
+        return [];
+    }
+    
+    queue.push(root);
+
+    while (queue.length > 0) {
+        const arr = []; 
+        const length = queue.length;
+
+        for (let i = 0; i < length; i++) {
+            const tempNode = new TreeNode();
+            tempNode = queue.shift();
+
+            if (tempNode.left !== null) {
+                queue.push(tempNode.left);
+            }
+
+            if (tempNode.right !== null) {
+                queue.push(tempNode.right);
+            }
+
+            arr.push(tempNode.val);
+        }
+        resArr.unshift(arr);
+    }
+    return resArr;    
+};

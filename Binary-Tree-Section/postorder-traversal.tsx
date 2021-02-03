@@ -27,4 +27,19 @@ function postorderTraversal(root: TreeNode | null): number[] {
 };
 
 // Iteratively
-// Todo
+// Correct solution
+var postorderTraversal = function(root) {
+    if (!root) return [];
+    
+    var result = [], stack = [root];
+    
+    while (stack.length) {
+        var node = stack.pop();
+        result.unshift(node.val);
+
+        if (node.left) stack.push(node.left); 
+        if (node.right) stack.push(node.right); 
+    }
+    
+    return result;
+};
