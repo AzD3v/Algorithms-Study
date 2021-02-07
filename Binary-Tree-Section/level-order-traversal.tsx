@@ -25,7 +25,7 @@
 
     while (queue.length > 0) {
         const arr = []; 
-        const length = queue.length;
+        const { length } = queue;
 
         for (let i = 0; i < length; i++) {
             const tempNode = new TreeNode();
@@ -41,7 +41,7 @@
 
             arr.push(tempNode.val);
         }
-        resArr.unshift(arr);
+        resArr.push(arr);
     }
     return resArr;    
 };
