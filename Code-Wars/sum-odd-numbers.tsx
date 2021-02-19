@@ -16,16 +16,20 @@ rowSumOddNumbers(2); // 3 + 5 = 8
 
 export class Challenge {
     static solution(number) {
-        const multiples: Array<number> = []
-
-        for (let i = 1; i < number; i++) {
-            if ((i % 3 === 0) || (i % 5 === 0)) {
-                multiples.push(i)
-            }
+        const sumArr: Array<number> = []
+        let lineOddsQnt: number = 0
+  
+        for (let i = n; i >= 1; i--) {
+            lineOddsQnt += i
         }
 
-        const sum = multiples.reduce((a, b) => a + b, 0)
-
-        return sum
-    }
+        for (let i = 1; sumArr.length < lineOddsQnt; i++) {
+            if (i % 2 !== 0) {
+                sumArr.push(i)
+            }
+        }
+  
+        return sumArr.slice(sumArr.length - n)
+            .reduce((a, b) => a + b)
+        }
 }

@@ -14,8 +14,6 @@ export class Challenge {
             }
         }
 
-        const sum = multiples.reduce((a, b) => a + b, 0)
-
-        return sum
+        return multiples.reduce((a, b) => a + b, 0)
     }
 }
